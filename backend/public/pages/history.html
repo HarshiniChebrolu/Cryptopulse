@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - CryptoPulse Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #0a0f1c, #1a1f36, #2d1b69, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .history-card {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .history-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">₿</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                CryptoPulse Analytics
+                            </h1>
+                            <p class="text-xs text-gray-400">Professional Trading Platform</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="/dashboard" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                            <span class="font-medium">Deep Analysis</span>
+                        </a>
+                        <a href="/overview" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                            <span class="font-medium">Market Overview</span>
+                        </a>
+                        <a href="/command-center" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="command" class="w-4 h-4"></i>
+                            <span class="font-medium">Command Center</span>
+                        </a>
+                        <a href="/history" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+                            <i data-lucide="history" class="w-4 h-4"></i>
+                            <span class="font-medium">History</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='/dashboard'" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-5xl font-black mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Prediction History
+            </h1>
+            <p class="text-gray-400 text-xl">Track your AI prediction performance and accuracy over time</p>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="history-card p-12 rounded-3xl text-center">
+            <div class="mb-8">
+                <i data-lucide="history" class="w-24 h-24 mx-auto mb-6 text-blue-400"></i>
+                <h2 class="text-3xl font-bold mb-4">Prediction History Coming Soon</h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                    We're building a comprehensive tracking system for your AI predictions, accuracy metrics, and performance analytics.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-gray-800/50 rounded-xl">
+                    <i data-lucide="target" class="w-8 h-8 mx-auto mb-3 text-green-400"></i>
+                    <h3 class="font-semibold mb-2">Accuracy Tracking</h3>
+                    <p class="text-sm text-gray-400">Monitor prediction accuracy across different timeframes</p>
+                </div>
+                <div class="p-6 bg-gray-800/50 rounded-xl">
+                    <i data-lucide="bar-chart" class="w-8 h-8 mx-auto mb-3 text-blue-400"></i>
+                    <h3 class="font-semibold mb-2">Performance Analytics</h3>
+                    <p class="text-sm text-gray-400">Detailed analytics on your trading performance</p>
+                </div>
+                <div class="p-6 bg-gray-800/50 rounded-xl">
+                    <i data-lucide="calendar" class="w-8 h-8 mx-auto mb-3 text-purple-400"></i>
+                    <h3 class="font-semibold mb-2">Historical Data</h3>
+                    <p class="text-sm text-gray-400">Complete history of all your predictions and outcomes</p>
+                </div>
+            </div>
+
+            <button onclick="window.location.href='/dashboard'" 
+                    class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-semibold transition-all hover:from-blue-700 hover:to-purple-700">
+                Start Making Predictions
+            </button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

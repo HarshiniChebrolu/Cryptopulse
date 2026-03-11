@@ -1,0 +1,373 @@
+2025-09-22 21:10:59,353 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:10:59,362 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:11:43,212 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:11:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:12:43,212 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:12:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:13:43,213 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:13:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:13:59,855 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-22 21:13:59,856 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-22 21:13:59,859 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:14:00,994 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:14:01,001 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:14:43,216 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:14:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:15:43,214 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:15:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:16:42,447 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-22 21:16:42,555 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:16:44,011 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:16:44,016 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:16:44,021 - __main__ - INFO -  Background tasks started
+2025-09-22 21:16:44,021 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:16:44,022 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:16:44,022 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:16:44,077 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:16:44,085 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:16:44,138 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:16:44] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:16:46,209 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-22 21:16:46,327 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:16:47,385 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:16:47,390 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:16:47,394 - __main__ - INFO -  Background tasks started
+2025-09-22 21:16:47,394 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:16:47,395 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:16:47,396 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:16:47,443 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:16:47,449 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:16:57,406 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:16:57,411 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:16:57,416 - __main__ - INFO -  Background tasks started
+2025-09-22 21:16:57,417 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:16:57,417 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:16:57,417 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:16:57,491 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-22 21:16:57,492 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-22 21:16:57,495 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:16:58,566 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:16:58,571 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:16:58,578 - __main__ - INFO -  Background tasks started
+2025-09-22 21:16:58,578 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:16:58,579 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:16:58,582 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:16:58,633 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:16:58,641 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:17:17,248 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:17] "GET / HTTP/1.1" 200 -
+2025-09-22 21:17:21,323 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:21] "GET /login HTTP/1.1" 200 -
+2025-09-22 21:17:25,177 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:25] "[32mGET /signup HTTP/1.1[0m" 302 -
+2025-09-22 21:17:25,189 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:25] "GET /login HTTP/1.1" 200 -
+2025-09-22 21:17:35,159 - __main__ - ERROR - Login API error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2025-09-22 21:17:35,162 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:35] "POST /api/login HTTP/1.1" 200 -
+2025-09-22 21:17:39,092 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:39] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:17:48,213 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:17:48] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:18:18,224 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:18:18] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:18:57,259 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:18:57,272 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:18:57,276 - __main__ - INFO -  Background tasks started
+2025-09-22 21:18:57,277 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:18:57,277 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:18:57,277 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:18:57,354 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-22 21:18:57,354 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-22 21:18:57,358 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:18:58,439 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:18:58,444 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:18:58,450 - __main__ - INFO -  Background tasks started
+2025-09-22 21:18:58,451 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:18:58,452 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:18:58,452 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:18:58,512 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:18:58,521 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:19:08,945 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:19:08] "GET / HTTP/1.1" 200 -
+2025-09-22 21:19:12,262 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:19:12] "GET /login HTTP/1.1" 200 -
+2025-09-22 21:19:20,992 - __main__ - ERROR - Login API error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2025-09-22 21:19:20,993 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:19:20] "POST /api/login HTTP/1.1" 200 -
+2025-09-22 21:19:43,215 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:19:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:20:28,050 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:20:28] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-09-22 21:20:28,062 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:20:28] "GET /login HTTP/1.1" 200 -
+2025-09-22 21:20:48,503 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:20:48,507 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:20:48,511 - __main__ - INFO -  Background tasks started
+2025-09-22 21:20:48,512 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:20:48,512 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:20:48,512 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:20:48,583 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-22 21:20:48,584 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-22 21:20:48,587 - werkzeug - INFO -  * Restarting with stat
+2025-09-22 21:20:49,546 - __main__ - INFO -  Starting CryptoPulse Analytics Platform
+2025-09-22 21:20:49,550 - __main__ - INFO -  Database connected successfully
+2025-09-22 21:20:49,555 - __main__ - INFO -  Background tasks started
+2025-09-22 21:20:49,555 - __main__ - INFO - CryptoPulse Platform Ready!
+2025-09-22 21:20:49,556 - __main__ - INFO - Features: AI Predictions, Real-time Data, User Management
+2025-09-22 21:20:49,556 - __main__ - INFO - Award-winning UI with database integration
+2025-09-22 21:20:49,676 - werkzeug - WARNING -  * Debugger is active!
+2025-09-22 21:20:49,682 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-22 21:21:05,769 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:21:05] "GET / HTTP/1.1" 200 -
+2025-09-22 21:21:43,222 - werkzeug - INFO - 127.0.0.1 - - [22/Sep/2025 21:21:43] "POST /api/predict HTTP/1.1" 200 -
+2025-09-22 21:22:32,016 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-22 21:22:32,209 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 19:05:26,158 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:26,318 - crypto_backend - INFO - Loaded models for ada daily
+2025-09-23 19:05:26,916 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:29,817 - crypto_backend - INFO - Loaded models for ada hourly
+2025-09-23 19:05:30,486 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:30,582 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:05:30,584 - crypto_backend - INFO - Loaded models for bnb daily
+2025-09-23 19:05:30,816 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:30,911 - crypto_backend - INFO - Loaded models for bnb hourly
+2025-09-23 19:05:31,138 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:31,190 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:05:31,191 - crypto_backend - INFO - Loaded models for btc daily
+2025-09-23 19:05:31,493 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:31,507 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:05:31,508 - crypto_backend - INFO - Loaded models for btc hourly
+2025-09-23 19:05:31,740 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:31,776 - crypto_backend - INFO - Loaded models for eth daily
+2025-09-23 19:05:31,947 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:32,023 - crypto_backend - INFO - Loaded models for eth hourly
+2025-09-23 19:05:32,197 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:32,227 - crypto_backend - INFO - Loaded models for ltc daily
+2025-09-23 19:05:32,399 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:32,468 - crypto_backend - INFO - Loaded models for ltc hourly
+2025-09-23 19:05:32,633 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:32,665 - crypto_backend - INFO - Loaded models for sol daily
+2025-09-23 19:05:32,905 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:32,978 - crypto_backend - INFO - Loaded models for sol hourly
+2025-09-23 19:05:33,173 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:33,265 - crypto_backend - INFO - Loaded models for xrp daily
+2025-09-23 19:05:33,442 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:05:33,531 - crypto_backend - INFO - Loaded models for xrp hourly
+2025-09-23 19:05:33,645 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 19:05:33,656 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 19:07:54,285 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:54,353 - crypto_backend - INFO - Loaded models for ada daily
+2025-09-23 19:07:54,710 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:54,998 - crypto_backend - INFO - Loaded models for ada hourly
+2025-09-23 19:07:55,266 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:55,277 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:07:55,280 - crypto_backend - INFO - Loaded models for bnb daily
+2025-09-23 19:07:55,422 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:55,455 - crypto_backend - INFO - Loaded models for bnb hourly
+2025-09-23 19:07:55,807 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:55,820 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:07:55,822 - crypto_backend - INFO - Loaded models for btc daily
+2025-09-23 19:07:55,964 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:55,971 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:07:55,971 - crypto_backend - INFO - Loaded models for btc hourly
+2025-09-23 19:07:56,205 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:56,215 - crypto_backend - INFO - Loaded models for eth daily
+2025-09-23 19:07:56,439 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:56,484 - crypto_backend - INFO - Loaded models for eth hourly
+2025-09-23 19:07:56,732 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:56,742 - crypto_backend - INFO - Loaded models for ltc daily
+2025-09-23 19:07:56,898 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:56,910 - crypto_backend - INFO - Loaded models for ltc hourly
+2025-09-23 19:07:57,036 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:57,045 - crypto_backend - INFO - Loaded models for sol daily
+2025-09-23 19:07:57,284 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:57,314 - crypto_backend - INFO - Loaded models for sol hourly
+2025-09-23 19:07:57,489 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:57,502 - crypto_backend - INFO - Loaded models for xrp daily
+2025-09-23 19:07:57,776 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:07:57,813 - crypto_backend - INFO - Loaded models for xrp hourly
+2025-09-23 19:07:58,034 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-23 19:07:58,034 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 19:07:58,039 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 19:08:08,911 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:08,957 - crypto_backend - INFO - Loaded models for ada daily
+2025-09-23 19:08:09,074 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,223 - crypto_backend - INFO - Loaded models for ada hourly
+2025-09-23 19:08:09,356 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,365 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:08:09,365 - crypto_backend - INFO - Loaded models for bnb daily
+2025-09-23 19:08:09,459 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,470 - crypto_backend - INFO - Loaded models for bnb hourly
+2025-09-23 19:08:09,591 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,600 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:08:09,600 - crypto_backend - INFO - Loaded models for btc daily
+2025-09-23 19:08:09,702 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,707 - crypto_backend - ERROR - Error loading model models\: [Errno 2] No such file or directory: 'models\\'
+2025-09-23 19:08:09,707 - crypto_backend - INFO - Loaded models for btc hourly
+2025-09-23 19:08:09,826 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,835 - crypto_backend - INFO - Loaded models for eth daily
+2025-09-23 19:08:09,946 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:09,954 - crypto_backend - INFO - Loaded models for eth hourly
+2025-09-23 19:08:10,072 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,078 - crypto_backend - INFO - Loaded models for ltc daily
+2025-09-23 19:08:10,176 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,186 - crypto_backend - INFO - Loaded models for ltc hourly
+2025-09-23 19:08:10,295 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,301 - crypto_backend - INFO - Loaded models for sol daily
+2025-09-23 19:08:10,451 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,459 - crypto_backend - INFO - Loaded models for sol hourly
+2025-09-23 19:08:10,585 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,600 - crypto_backend - INFO - Loaded models for xrp daily
+2025-09-23 19:08:10,722 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2025-09-23 19:08:10,737 - crypto_backend - INFO - Loaded models for xrp hourly
+2025-09-23 19:08:10,772 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 19:08:10,782 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 19:08:38,759 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:38] "[36mGET / HTTP/1.1[0m" 304 -
+2025-09-23 19:08:38,812 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:38] "[36mGET /css/tailwind.css HTTP/1.1[0m" 304 -
+2025-09-23 19:08:40,958 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:40] "GET /pages/multi_coin_overview_dashboard.html HTTP/1.1" 200 -
+2025-09-23 19:08:41,025 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:41] "[33mGET /pages/main.css HTTP/1.1[0m" 404 -
+2025-09-23 19:08:41,031 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:41] "[33mGET /pages/tailwind.css HTTP/1.1[0m" 404 -
+2025-09-23 19:08:41,035 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:08:41] "[33mGET /pages/main.js HTTP/1.1[0m" 404 -
+2025-09-23 19:09:03,592 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:03] "[36mGET /pages/multi_coin_overview_dashboard.html HTTP/1.1[0m" 304 -
+2025-09-23 19:09:03,655 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:03] "[33mGET /pages/tailwind.css HTTP/1.1[0m" 404 -
+2025-09-23 19:09:03,659 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:03] "[33mGET /pages/main.css HTTP/1.1[0m" 404 -
+2025-09-23 19:09:03,687 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:03] "[33mGET /pages/main.js HTTP/1.1[0m" 404 -
+2025-09-23 19:09:04,048 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:04] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2025-09-23 19:09:06,012 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:09:06] "[33mGET /overview HTTP/1.1[0m" 404 -
+2025-09-23 19:11:01,213 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:11:01] "[33mGET /overview HTTP/1.1[0m" 404 -
+2025-09-23 19:11:01,337 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:11:01] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2025-09-23 19:11:02,632 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:11:02] "[33mGET /overview HTTP/1.1[0m" 404 -
+2025-09-23 19:11:02,693 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:11:02] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2025-09-23 19:14:44,160 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:14:44] "GET / HTTP/1.1" 200 -
+2025-09-23 19:14:44,253 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:14:44] "GET /css/tailwind.css HTTP/1.1" 200 -
+2025-09-23 19:14:46,694 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:14:46] "GET /favicon.ico HTTP/1.1" 200 -
+2025-09-23 19:15:54,616 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:15:54] "GET /pages/multi_coin_overview_dashboard.html HTTP/1.1" 200 -
+2025-09-23 19:15:54,687 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:15:54] "[33mGET /pages/main.css HTTP/1.1[0m" 404 -
+2025-09-23 19:15:54,705 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:15:54] "[33mGET /pages/tailwind.css HTTP/1.1[0m" 404 -
+2025-09-23 19:15:54,726 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:15:54] "[33mGET /pages/main.js HTTP/1.1[0m" 404 -
+2025-09-23 19:15:58,104 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 19:15:58] "[33mGET /overview HTTP/1.1[0m" 404 -
+2025-09-23 19:57:12,265 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-23 19:57:15,570 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 19:57:20,098 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 19:57:20,106 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 19:58:55,378 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-23 19:58:55,379 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 19:58:55,382 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 19:58:57,597 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 19:58:57,605 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:02:29,407 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-23 20:02:29,671 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:02:31,924 - crypto_backend - INFO - All routes configured
+2025-09-23 20:02:31,952 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:02:31,958 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:02:59,121 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-23 20:02:59,381 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:03:01,744 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:03:01,745 - crypto_backend - INFO -  Real-time cryptocurrency data enabled
+2025-09-23 20:03:01,745 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:03:01,746 - crypto_backend - INFO - All routes configured
+2025-09-23 20:03:01,774 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:03:01,781 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:03:18,717 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:03:18,718 - crypto_backend - INFO -  Real-time cryptocurrency data enabled
+2025-09-23 20:03:18,718 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:03:18,718 - crypto_backend - INFO - All routes configured
+2025-09-23 20:03:18,769 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-23 20:03:18,769 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 20:03:18,772 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:03:20,848 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:03:20,849 - crypto_backend - INFO -  Real-time cryptocurrency data enabled
+2025-09-23 20:03:20,849 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:03:20,850 - crypto_backend - INFO - All routes configured
+2025-09-23 20:03:20,875 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:03:20,881 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:03:30,215 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:03:30] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-23 20:04:04,577 - werkzeug - INFO - 192.168.1.5 - - [23/Sep/2025 20:04:04] "[33mGET / HTTP/1.1[0m" 404 -
+2025-09-23 20:04:04,863 - werkzeug - INFO - 192.168.1.5 - - [23/Sep/2025 20:04:04] "GET /favicon.ico HTTP/1.1" 200 -
+2025-09-23 20:29:56,190 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-23 20:29:56,533 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:29:59,327 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:29:59,327 - crypto_backend - INFO - Real-time cryptocurrency data enabled
+2025-09-23 20:29:59,328 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:29:59,329 - crypto_backend - INFO - All routes configured
+2025-09-23 20:29:59,359 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:29:59,366 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:30:16,422 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:30:16,423 - crypto_backend - INFO - Real-time cryptocurrency data enabled
+2025-09-23 20:30:16,423 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:30:16,424 - crypto_backend - INFO - All routes configured
+2025-09-23 20:30:16,477 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-23 20:30:16,478 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 20:30:16,481 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:30:18,599 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:30:18,599 - crypto_backend - INFO - Real-time cryptocurrency data enabled
+2025-09-23 20:30:18,600 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:30:18,601 - crypto_backend - INFO - All routes configured
+2025-09-23 20:30:18,623 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:30:18,631 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:31:43,651 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:31:43,652 - crypto_backend - INFO - Real-time cryptocurrency data enabled
+2025-09-23 20:31:43,652 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:31:43,652 - crypto_backend - INFO - All routes configured
+2025-09-23 20:31:43,691 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-09-23 20:31:43,692 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-23 20:31:43,696 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 20:31:45,907 - crypto_backend - INFO - Starting CryptoPulse Analytics Server...
+2025-09-23 20:31:45,907 - crypto_backend - INFO - Real-time cryptocurrency data enabled
+2025-09-23 20:31:45,908 - crypto_backend - INFO - AI prediction engine loaded
+2025-09-23 20:31:45,909 - crypto_backend - INFO - All routes configured
+2025-09-23 20:31:45,937 - werkzeug - WARNING -  * Debugger is active!
+2025-09-23 20:31:45,944 - werkzeug - INFO -  * Debugger PIN: 109-491-675
+2025-09-23 20:32:05,303 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:05] "GET / HTTP/1.1" 200 -
+2025-09-23 20:32:11,556 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:11] "GET /dashboard HTTP/1.1" 200 -
+2025-09-23 20:32:14,211 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:32:14,215 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:14] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:32:38,801 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:38] "GET / HTTP/1.1" 200 -
+2025-09-23 20:32:41,452 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:41] "GET /overview HTTP/1.1" 200 -
+2025-09-23 20:32:43,497 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:32:43,500 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:43] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:32:48,692 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:48] "GET /command-center HTTP/1.1" 200 -
+2025-09-23 20:32:55,130 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:32:55] "GET / HTTP/1.1" 200 -
+2025-09-23 20:55:03,296 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:03] "GET /overview HTTP/1.1" 200 -
+2025-09-23 20:55:05,370 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:55:05,374 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:05] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:55:05,857 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:05] "GET /dashboard HTTP/1.1" 200 -
+2025-09-23 20:55:07,336 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:55:07,340 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:07] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:55:07,882 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:07] "GET /command-center HTTP/1.1" 200 -
+2025-09-23 20:55:09,682 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:09] "GET /dashboard HTTP/1.1" 200 -
+2025-09-23 20:55:11,189 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:55:11,193 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:11] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:55:11,792 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:11] "GET / HTTP/1.1" 200 -
+2025-09-23 20:55:14,130 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:14] "GET /dashboard HTTP/1.1" 200 -
+2025-09-23 20:55:15,648 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:55:15,652 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:15] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:55:46,367 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:55:46,372 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:55:46] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:56:16,980 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:56:16,985 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:56:16] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:56:47,402 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:56:47,467 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:56:47] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:57:16,478 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:57:16,481 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:57:16] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:57:46,551 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:57:46,555 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:57:46] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:58:16,435 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:58:16,439 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:58:16] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:58:46,491 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:58:46,495 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:58:46] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 20:59:35,957 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 20:59:35,960 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 20:59:35] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 21:00:36,785 - crypto_backend - INFO - Successfully fetched data for 7 coins from CoinGecko
+2025-09-23 21:00:36,790 - werkzeug - INFO - 127.0.0.1 - - [23/Sep/2025 21:00:36] "GET /api/prices/all HTTP/1.1" 200 -
+2025-09-23 21:01:35,183 - werkzeug - INFO -  * Detected change in 'C:\\Users\\chebr\\OneDrive\\Desktop\\Crypto_project\\backend\\app.py', reloading
+2025-09-23 21:01:35,457 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 21:02:46,231 - werkzeug - INFO -  * Restarting with stat
+2025-09-23 21:04:29,248 - werkzeug - INFO -  * Restarting with stat

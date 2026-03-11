@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - CryptoPulse Analytics</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fcryptopuls9795back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen font-inter flex items-center justify-center">
+    <!-- Background Animation -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl animate-pulse"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="relative z-10 w-full max-w-md px-6">
+        <!-- Logo Section -->
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center glow-primary">
+                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-text-primary">CryptoPulse</h1>
+                    <p class="text-sm text-text-secondary">Analytics Platform</p>
+                </div>
+            </div>
+            <p class="text-text-secondary">Sign in to your cryptocurrency analytics dashboard</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="glassmorphism rounded-2xl p-8">
+            <form id="loginForm" class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-text-secondary mb-2">
+                        Email Address
+                    </label>
+                    <div class="relative">
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 pl-12 rounded-lg bg-surface text-text-primary border border-border focus:border-primary focus:outline-none transition-smooth" placeholder="Enter your email" required />
+                        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-text-secondary mb-2">
+                        Password
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" class="w-full px-4 py-3 pl-12 pr-12 rounded-lg bg-surface text-text-primary border border-border focus:border-primary focus:outline-none transition-smooth" placeholder="Enter your password" required />
+                        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <button type="button" id="togglePassword" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-text-tertiary hover:text-text-secondary transition-smooth">
+                            <svg id="eyeOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                            <svg id="eyeClosed" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="remember" class="sr-only peer" />
+                        <div class="w-5 h-5 bg-surface border border-border rounded peer-checked:bg-primary peer-checked:border-primary transition-smooth flex items-center justify-center">
+                            <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <span class="ml-2 text-sm text-text-secondary">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-primary hover:text-primary-600 transition-smooth">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" id="loginButton" class="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-lg hover:from-primary-600 hover:to-accent-600 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-smooth relative overflow-hidden">
+                    <span id="loginText">Sign In</span>
+                    <div id="loginSpinner" class="hidden absolute inset-0 flex items-center justify-center">
+                        <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Demo Account Notice -->
+            <div class="mt-6 p-4 bg-accent/10 border border-accent/30 rounded-lg">
+                <div class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-accent mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                    <div>
+                        <h4 class="font-medium text-accent mb-1">Demo Access</h4>
+                        <p class="text-sm text-text-secondary">
+                            Use any email and password to access the demo dashboard. All data is simulated for demonstration purposes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Login Options -->
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-border"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-background text-text-tertiary">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-border rounded-lg bg-surface hover:bg-surface-light transition-smooth">
+                        <svg class="w-5 h-5 text-text-secondary" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        <span class="ml-2 text-sm text-text-secondary">Google</span>
+                    </button>
+                    <button type="button" class="flex items-center justify-center px-4 py-2 border border-border rounded-lg bg-surface hover:bg-surface-light transition-smooth">
+                        <svg class="w-5 h-5 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        <span class="ml-2 text-sm text-text-secondary">Facebook</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sign Up Link -->
+            <div class="mt-6 text-center">
+                <p class="text-text-secondary">
+                    Don't have an account? 
+                    <a href="#" class="text-primary hover:text-primary-600 font-medium transition-smooth">
+                        Sign up for free
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="mt-6 text-center">
+            <p class="text-xs text-text-tertiary">
+                Protected by enterprise-grade security. Your data is encrypted and secure.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const eyeOpen = document.getElementById('eyeOpen');
+            const eyeClosed = document.getElementById('eyeClosed');
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeOpen.classList.add('hidden');
+                eyeClosed.classList.remove('hidden');
+            } else {
+                password.type = 'password';
+                eyeOpen.classList.remove('hidden');
+                eyeClosed.classList.add('hidden');
+            }
+        });
+
+        // Remember me checkbox styling
+        document.getElementById('remember').addEventListener('change', function() {
+            const checkbox = this.nextElementSibling;
+            if (this.checked) {
+                checkbox.classList.add('peer-checked:bg-primary', 'peer-checked:border-primary');
+            }
+        });
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loginButton = document.getElementById('loginButton');
+            const loginText = document.getElementById('loginText');
+            const loginSpinner = document.getElementById('loginSpinner');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Validation
+            if (!email || !password) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Show loading state
+            loginText.classList.add('opacity-0');
+            loginSpinner.classList.remove('hidden');
+            loginButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // For demo purposes, any email/password combination works
+                if (email && password) {
+                    showNotification('Login successful! Redirecting...', 'success');
+                    
+                    // Store demo session
+                    localStorage.setItem('cryptopulse_session', JSON.stringify({
+                        user: email,
+                        loginTime: Date.now(),
+                        demo: true
+                    }));
+                    
+                    // Redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'multi_coin_overview_dashboard.html';
+                    }, 1500);
+                } else {
+                    showNotification('Invalid credentials', 'error');
+                    
+                    // Reset button state
+                    loginText.classList.remove('opacity-0');
+                    loginSpinner.classList.add('hidden');
+                    loginButton.disabled = false;
+                }
+            }, 2000);
+        });
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg border transition-all duration-300 transform translate-x-full`;
+            
+            const colors = {
+                success: 'bg-accent/10 border-accent/30 text-accent',
+                error: 'bg-error/10 border-error/30 text-error',
+                info: 'bg-primary/10 border-primary/30 text-primary'
+            };
+            
+            notification.classList.add(...colors[type].split(' '));
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remove after delay
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Social login handlers
+        document.querySelectorAll('button[type="button"]').forEach(button => {
+            if (button.textContent.includes('Google') || button.textContent.includes('Facebook')) {
+                button.addEventListener('click', function() {
+                    const provider = this.textContent.includes('Google') ? 'Google' : 'Facebook';
+                    showNotification(`${provider} login is not available in demo mode`, 'info');
+                });
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            const session = localStorage.getItem('cryptopulse_session');
+            if (session) {
+                const sessionData = JSON.parse(session);
+                const now = Date.now();
+                const loginTime = sessionData.loginTime;
+                
+                // Auto-login if session is less than 24 hours old
+                if (now - loginTime < 24 * 60 * 60 * 1000) {
+                    showNotification('Welcome back! Redirecting to dashboard...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'multi_coin_overview_dashboard.html';
+                    }, 1500);
+                }
+            }
+        });
+
+        // Form field animations
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('ring-2', 'ring-primary/20');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('ring-2', 'ring-primary/20');
+            });
+        });
+    </script>
+</body>
+</html>

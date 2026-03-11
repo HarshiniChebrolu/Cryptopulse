@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History - CryptoPulse Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .history-card {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .history-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .accuracy-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .accuracy-badge.medium {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .accuracy-badge.low {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .prediction-positive { color: #10b981; }
+        .prediction-negative { color: #ef4444; }
+
+        .stats-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">₿</span>
+                        </div>
+                        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                            CryptoPulse
+                        </h1>
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="/dashboard" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="activity" class="w-4 h-4"></i>
+                            <span class="font-medium">Deep Analysis</span>
+                        </a>
+                        <a href="/overview" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                            <span class="font-medium">Market Overview</span>
+                        </a>
+                        <a href="/command-center" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="command" class="w-4 h-4"></i>
+                            <span class="font-medium">Command Center</span>
+                        </a>
+                        <a href="/history" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+                            <i data-lucide="history" class="w-4 h-4"></i>
+                            <span class="font-medium">History</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='/dashboard'" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Prediction History
+            </h1>
+            <p class="text-gray-400 text-lg">Track your AI prediction performance and accuracy over time</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="stats-card p-6 rounded-xl">
+                <div class="text-2xl font-bold text-blue-400 mb-2" id="totalPredictions">0</div>
+                <div class="text-sm text-gray-400">Total Predictions</div>
+            </div>
+            <div class="stats-card p-6 rounded-xl">
+                <div class="text-2xl font-bold text-green-400 mb-2" id="accuratePredictions">0</div>
+                <div class="text-sm text-gray-400">Accurate Predictions</div>
+            </div>
+            <div class="stats-card p-6 rounded-xl">
+                <div class="text-2xl font-bold text-purple-400 mb-2" id="averageAccuracy">0%</div>
+                <div class="text-sm text-gray-400">Average Accuracy</div>
+            </div>
+            <div class="stats-card p-6 rounded-xl">
+                <div class="text-2xl font-bold text-yellow-400 mb-2" id="bestPerformance">N/A</div>
+                <div class="text-sm text-gray-400">Best Performing Coin</div>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="mb-8">
+            <div class="flex flex-wrap gap-4">
+                <select id="coinFilter" class="bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white">
+                    <option value="">All Coins</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="ADA">Cardano (ADA)</option>
+                    <option value="SOL">Solana (SOL)</option>
+                    <option value="BNB">BNB (BNB)</option>
+                    <option value="XRP">XRP (XRP)</option>
+                    <option value="LTC">Litecoin (LTC)</option>
+                </select>
+                <select id="timeframeFilter" class="bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white">
+                    <option value="">All Timeframes</option>
+                    <option value="24h">24 Hours</option>
+                    <option value="7d">7 Days</option>
+                    <option value="30d">30 Days</option>
+                </select>
+                <button id="refreshHistory" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                    Refresh
+                </button>
+            </div>
+        </div>
+
+        <!-- Predictions List -->
+        <div id="predictionsList" class="space-y-4">
+            <!-- Predictions will be loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="text-center py-16 hidden">
+            <i data-lucide="clock" class="w-16 h-16 mx-auto text-gray-600 mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-400 mb-2">No Predictions Yet</h3>
+            <p class="text-gray-500 mb-6">Start making predictions to see your history here</p>
+            <button onclick="window.location.href='/dashboard'" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                Make Your First Prediction
+            </button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-16">
+            <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-gray-400">Loading prediction history...</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        let predictions = [];
+
+        // Load prediction history
+        async function loadPredictionHistory() {
+            try {
+                const response = await fetch('/api/user/predictions');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch predictions');
+                }
+
+                const data = await response.json();
+                predictions = data.predictions || [];
+
+                displayPredictions();
+                updateStats();
+
+                // Hide loading, show content or empty state
+                document.getElementById('loadingState').classList.add('hidden');
+                if (predictions.length === 0) {
+                    document.getElementById('emptyState').classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error('Error loading predictions:', error);
+                document.getElementById('loadingState').innerHTML = `
+                    <i data-lucide="alert-circle" class="w-8 h-8 mx-auto text-red-400 mb-4"></i>
+                    <p class="text-red-400">Failed to load prediction history</p>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        // Display predictions
+        function displayPredictions() {
+            const container = document.getElementById('predictionsList');
+            const coinFilter = document.getElementById('coinFilter').value;
+            const timeframeFilter = document.getElementById('timeframeFilter').value;
+
+            let filteredPredictions = predictions;
+
+            if (coinFilter) {
+                filteredPredictions = filteredPredictions.filter(p => p.coin === coinFilter);
+            }
+
+            if (timeframeFilter) {
+                filteredPredictions = filteredPredictions.filter(p => p.timeframe === timeframeFilter);
+            }
+
+            if (filteredPredictions.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-center py-8">No predictions found matching your filters</p>';
+                return;
+            }
+
+            container.innerHTML = filteredPredictions.map(prediction => {
+                const change = prediction.prediction_change || 0;
+                const changePercent = prediction.prediction_change_percent || 0;
+                const isPositive = change >= 0;
+                const confidence = prediction.confidence_score || 0;
+                const date = new Date(prediction.prediction_timestamp).toLocaleDateString();
+                const time = new Date(prediction.prediction_timestamp).toLocaleTimeString();
+
+                let accuracyBadge = '';
+                if (prediction.accuracy_score) {
+                    const accuracy = prediction.accuracy_score;
+                    let badgeClass = 'accuracy-badge';
+                    if (accuracy < 70) badgeClass += ' low';
+                    else if (accuracy < 85) badgeClass += ' medium';
+
+                    accuracyBadge = `<span class="${badgeClass} text-xs px-2 py-1 rounded-full text-white">${accuracy.toFixed(1)}% Accurate</span>`;
+                }
+
+                return `
+                    <div class="history-card p-6 rounded-xl">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm">${prediction.coin}</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">${prediction.coin} Prediction</h3>
+                                    <p class="text-sm text-gray-400">${prediction.timeframe} • ${prediction.model_used || 'AI Model'}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm text-gray-400">${date}</div>
+                                <div class="text-xs text-gray-500">${time}</div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                            <div>
+                                <div class="text-sm text-gray-400">Current Price</div>
+                                <div class="font-semibold">$${prediction.current_price.toFixed(2)}</div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Predicted Price</div>
+                                <div class="font-semibold">$${prediction.predicted_price.toFixed(2)}</div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Expected Change</div>
+                                <div class="font-semibold ${isPositive ? 'prediction-positive' : 'prediction-negative'}">
+                                    ${isPositive ? '+' : ''}${changePercent.toFixed(2)}%
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Confidence</div>
+                                <div class="font-semibold text-blue-400">${(confidence * 100).toFixed(1)}%</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                ${accuracyBadge}
+                                <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">${prediction.timeframe}</span>
+                            </div>
+                            ${prediction.actual_price ? `<div class="text-sm text-gray-400">Actual: $${prediction.actual_price.toFixed(2)}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = predictions.length;
+            const accurate = predictions.filter(p => p.accuracy_score && p.accuracy_score > 80).length;
+            const avgAccuracy = predictions.reduce((sum, p) => sum + (p.accuracy_score || 0), 0) / total;
+
+            // Find best performing coin
+            const coinStats = {};
+            predictions.forEach(p => {
+                if (!coinStats[p.coin]) {
+                    coinStats[p.coin] = { total: 0, accurate: 0 };
+                }
+                coinStats[p.coin].total++;
+                if (p.accuracy_score && p.accuracy_score > 80) {
+                    coinStats[p.coin].accurate++;
+                }
+            });
+
+            let bestCoin = 'N/A';
+            let bestAccuracy = 0;
+            Object.keys(coinStats).forEach(coin => {
+                const accuracy = (coinStats[coin].accurate / coinStats[coin].total) * 100;
+                if (accuracy > bestAccuracy) {
+                    bestAccuracy = accuracy;
+                    bestCoin = coin;
+                }
+            });
+
+            document.getElementById('totalPredictions').textContent = total;
+            document.getElementById('accuratePredictions').textContent = accurate;
+            document.getElementById('averageAccuracy').textContent = total > 0 ? avgAccuracy.toFixed(1) + '%' : '0%';
+            document.getElementById('bestPerformance').textContent = bestCoin;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPredictionHistory();
+
+            // Filter change handlers
+            document.getElementById('coinFilter').addEventListener('change', displayPredictions);
+            document.getElementById('timeframeFilter').addEventListener('change', displayPredictions);
+
+            // Refresh button
+            document.getElementById('refreshHistory').addEventListener('click', loadPredictionHistory);
+        });
+    </script>
+</body>
+</html>

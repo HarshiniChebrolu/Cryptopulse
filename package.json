@@ -1,0 +1,15 @@
+{
+  "name": "crypto_project",
+  "version": "1.0.0",
+  "description": "A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^4.1.13"
+  }
+}

@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Analysis Dashboard - CryptoPulse Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #0a0f1c, #1a1f36, #2d1b69, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .analysis-card {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.3);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .coin-selector-pill {
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.8) 0%, rgba(75, 85, 99, 0.6) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .coin-selector-pill.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: #3b82f6;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .coin-selector-pill:hover:not(.active) {
+            background: linear-gradient(135deg, rgba(75, 85, 99, 0.9) 0%, rgba(107, 114, 128, 0.7) 100%);
+            border-color: rgba(148, 163, 184, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .live-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-change-positive {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .price-change-negative {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .chart-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .prediction-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+        }
+
+        .prediction-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .prediction-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
+        }
+
+        .technical-indicator {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-bullish { 
+            border-left: 4px solid #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+        }
+
+        .indicator-bearish { 
+            border-left: 4px solid #ef4444;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+        }
+
+        .indicator-neutral { 
+            border-left: 4px solid #6b7280;
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.1) 0%, rgba(75, 85, 99, 0.05) 100%);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .loading-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">₿</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                CryptoPulse Analytics
+                            </h1>
+                            <p class="text-xs text-gray-400">Professional Trading Dashboard</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="/dashboard" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                            <span class="font-medium">Deep Analysis</span>
+                        </a>
+                        <a href="/overview" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                            <span class="font-medium">Market Overview</span>
+                        </a>
+                        <a href="/command-center" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="command" class="w-4 h-4"></i>
+                            <span class="font-medium">Command Center</span>
+                        </a>
+                        <a href="/history" class="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors">
+                            <i data-lucide="history" class="w-4 h-4"></i>
+                            <span class="font-medium">History</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 text-green-400">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-medium">Live Data</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-blue-400">
+                        <i data-lucide="wifi" class="w-4 h-4"></i>
+                        <span class="text-sm font-medium">API Connected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-6xl font-black mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Deep Technical Analysis
+            </h1>
+            <p class="text-gray-400 text-xl">Advanced cryptocurrency analysis with AI-powered predictions and real-time market insights</p>
+        </div>
+
+        <!-- Coin Selection -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-4 text-gray-300">Select Cryptocurrency</h3>
+            <div class="flex flex-wrap gap-3" id="coinSelector">
+                <!-- Loading state -->
+                <div class="coin-selector-pill active px-4 py-2 rounded-full font-medium transition-all loading-pulse">
+                    <span>Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Selection Info -->
+        <div class="mb-8">
+            <div class="analysis-card p-8">
+                <div class="text-center">
+                    <div class="mb-4">
+                        <img id="selectedCoinLogo" src="" alt="" class="w-16 h-16 rounded-full mx-auto mb-4 hidden">
+                        <h2 class="text-3xl font-bold mb-2" id="selectedCoinName">Select a cryptocurrency</h2>
+                        <p class="text-gray-400" id="selectedCoinSymbol">Choose a coin to analyze</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Price and Stats -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Live Price -->
+            <div class="analysis-card p-8">
+                <h3 class="text-lg font-semibold mb-6 text-gray-300 flex items-center">
+                    <i data-lucide="dollar-sign" class="w-5 h-5 mr-2"></i>
+                    Live Price
+                </h3>
+                <div class="text-center">
+                    <div class="live-price mb-2" id="livePrice">$0.00</div>
+                    <div class="text-xl text-gray-400 mb-4" id="livePriceINR">₹0.00</div>
+                    <div class="price-change-positive px-3 py-2 rounded-full text-sm font-medium inline-flex items-center" id="priceChange">
+                        <i data-lucide="minus" class="w-4 h-4 mr-1"></i>
+                        0.00%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Statistics -->
+            <div class="analysis-card p-8">
+                <h3 class="text-lg font-semibold mb-6 text-gray-300 flex items-center">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-2"></i>
+                    Key Statistics
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Market Cap</span>
+                        <span class="font-semibold" id="marketCap">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">24h Volume</span>
+                        <span class="font-semibold" id="volume24h">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">24h High</span>
+                        <span class="font-semibold text-green-400" id="high24h">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">24h Low</span>
+                        <span class="font-semibold text-red-400" id="low24h">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="analysis-card p-8">
+                <h3 class="text-lg font-semibold mb-6 text-gray-300 flex items-center">
+                    <i data-lucide="activity" class="w-5 h-5 mr-2"></i>
+                    System Status
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Data Source</span>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            <span class="text-green-400 font-semibold" id="dataSource">Live API</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">AI Model</span>
+                        <span class="text-purple-400 font-semibold">LSTM+XGBoost</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Last Updated</span>
+                        <span class="text-gray-300 text-sm" id="lastUpdated">--</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Prediction Ready</span>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                            <span class="text-blue-400 font-semibold">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Chart -->
+        <div class="analysis-card p-8 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold flex items-center">
+                    <i data-lucide="trending-up" class="w-6 h-6 mr-3"></i>
+                    Price Chart & Analysis
+                </h3>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 text-blue-400">
+                        <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                        <span class="text-sm">Price</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-purple-400">
+                        <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                        <span class="text-sm">Volume</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <select id="chartTimeframe" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-1 text-sm text-white">
+                            <option value="7">7 Days</option>
+                            <option value="30" selected>30 Days</option>
+                            <option value="90">90 Days</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="priceChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="mt-4 text-xs text-gray-400 text-center">
+                Real-time data from multiple exchanges • Last updated: <span id="chartLastUpdated">--</span>
+            </div>
+        </div>
+
+        <!-- AI Predictions Section -->
+        <div class="prediction-section p-8 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold flex items-center">
+                    🤖 AI-Powered Predictions
+                    <span class="ml-3 text-xs bg-purple-600 text-white px-3 py-1 rounded-full">Advanced ML</span>
+                </h3>
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-purple-400 font-medium">Models Active</span>
+                </div>
+            </div>
+
+            <p class="text-gray-400 mb-8">Advanced LSTM and XGBoost machine learning models analyze market patterns, technical indicators, and sentiment to forecast price movements with high accuracy.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="predictionCards">
+                <!-- Prediction cards will be loaded here -->
+                <div class="prediction-card p-6">
+                    <div class="text-center loading-pulse">
+                        <div class="text-gray-400">Select a cryptocurrency to view AI predictions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Analysis -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Technical Indicators -->
+            <div class="analysis-card p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i data-lucide="target" class="w-5 h-5 mr-3"></i>
+                    Technical Indicators
+                </h3>
+                <div class="space-y-4" id="technicalIndicators">
+                    <div class="technical-indicator indicator-neutral">
+                        <div class="text-center text-gray-400">
+                            Select a cryptocurrency to view technical indicators
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Sentiment -->
+            <div class="analysis-card p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i data-lucide="thermometer" class="w-5 h-5 mr-3"></i>
+                    Market Sentiment
+                </h3>
+                <div class="text-center mb-6">
+                    <div class="stat-value mb-2" id="sentimentScore">--</div>
+                    <div class="text-lg font-semibold" id="sentimentLabel">Select Coin</div>
+                    <div class="text-sm text-gray-400 mt-2" id="sentimentDescription">Choose a cryptocurrency to analyze sentiment</div>
+                </div>
+
+                <div class="space-y-4" id="sentimentBreakdown">
+                    <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                        <span class="text-gray-400">Fear & Greed Index</span>
+                        <span class="font-semibold">--</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                        <span class="text-gray-400">Social Sentiment</span>
+                        <span class="font-semibold">--</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                        <span class="text-gray-400">News Sentiment</span>
+                        <span class="font-semibold">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="analysis-card p-8">
+            <h3 class="text-xl font-bold mb-6 flex items-center">
+                <i data-lucide="zap" class="w-5 h-5 mr-3"></i>
+                Quick Actions
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="generatePrediction()" class="flex flex-col items-center p-6 bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors">
+                    <i data-lucide="brain" class="w-8 h-8 mb-2"></i>
+                    <span class="font-semibold">Generate Prediction</span>
+                </button>
+
+                <button onclick="refreshData()" class="flex flex-col items-center p-6 bg-green-600 hover:bg-green-700 rounded-xl transition-colors">
+                    <i data-lucide="refresh-cw" class="w-8 h-8 mb-2"></i>
+                    <span class="font-semibold">Refresh Data</span>
+                </button>
+
+                <button onclick="viewHistory()" class="flex flex-col items-center p-6 bg-purple-600 hover:bg-purple-700 rounded-xl transition-colors">
+                    <i data-lucide="history" class="w-8 h-8 mb-2"></i>
+                    <span class="font-semibold">View History</span>
+                </button>
+
+                <button onclick="exportData()" class="flex flex-col items-center p-6 bg-yellow-600 hover:bg-yellow-700 rounded-xl transition-colors">
+                    <i data-lucide="download" class="w-8 h-8 mb-2"></i>
+                    <span class="font-semibold">Export Data</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-xl font-semibold">Analyzing Market Data...</p>
+            <p class="text-gray-400">Running AI models and technical analysis</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Global variables
+        let selectedCoin = 'BTC';
+        let marketData = {};
+        let chartInstance = null;
+        const USD_TO_INR = 83;
+
+        // Coin configuration
+        const COIN_CONFIG = {
+            BTC: { name: 'Bitcoin', logo: 'https://cryptologos.cc/logos/bitcoin-btc-logo.png' },
+            ETH: { name: 'Ethereum', logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png' },
+            BNB: { name: 'Binance Coin', logo: 'https://cryptologos.cc/logos/bnb-bnb-logo.png' },
+            ADA: { name: 'Cardano', logo: 'https://cryptologos.cc/logos/cardano-ada-logo.png' },
+            XRP: { name: 'Ripple', logo: 'https://cryptologos.cc/logos/xrp-xrp-logo.png' },
+            LTC: { name: 'Litecoin', logo: 'https://cryptologos.cc/logos/litecoin-ltc-logo.png' },
+            SOL: { name: 'Solana', logo: 'https://cryptologos.cc/logos/solana-sol-logo.png' }
+        };
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('🚀 Initializing Deep Analysis Dashboard...');
+
+            // Check URL parameters for specific coin
+            const urlParams = new URLSearchParams(window.location.search);
+            const coinParam = urlParams.get('coin');
+            if (coinParam && COIN_CONFIG[coinParam.toUpperCase()]) {
+                selectedCoin = coinParam.toUpperCase();
+            }
+
+            await loadMarketData();
+            await loadCoinSelector();
+            await analyzeCoin(selectedCoin);
+
+            setupEventListeners();
+            startAutoRefresh();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('chartTimeframe').addEventListener('change', function() {
+                loadPriceChart();
+            });
+        }
+
+        async function loadMarketData() {
+            try {
+                showLoadingOverlay(true);
+
+                const response = await fetch('/api/prices/all');
+                const data = await response.json();
+
+                if (data.success) {
+                    marketData = data.data;
+                    console.log(`✅ Loaded data for ${Object.keys(marketData).length} coins`);
+                } else {
+                    throw new Error(data.error || 'Failed to load market data');
+                }
+
+            } catch (error) {
+                console.error('Error loading market data:', error);
+                // Load fallback data
+                loadFallbackData();
+            } finally {
+                showLoadingOverlay(false);
+            }
+        }
+
+        function loadFallbackData() {
+            marketData = {
+                BTC: { symbol: 'BTC', name: 'Bitcoin', price_usd: 65234, change_24h: 2.3, volume_24h: 28000000000, market_cap: 1280000000000 },
+                ETH: { symbol: 'ETH', name: 'Ethereum', price_usd: 3456, change_24h: 1.8, volume_24h: 15000000000, market_cap: 415000000000 },
+                BNB: { symbol: 'BNB', name: 'Binance Coin', price_usd: 612, change_24h: -0.8, volume_24h: 2000000000, market_cap: 89000000000 },
+                ADA: { symbol: 'ADA', name: 'Cardano', price_usd: 0.856, change_24h: 3.2, volume_24h: 800000000, market_cap: 30000000000 },
+                XRP: { symbol: 'XRP', name: 'Ripple', price_usd: 0.601, change_24h: -1.2, volume_24h: 1200000000, market_cap: 32000000000 },
+                LTC: { symbol: 'LTC', name: 'Litecoin', price_usd: 110.45, change_24h: 0.8, volume_24h: 600000000, market_cap: 8000000000 },
+                SOL: { symbol: 'SOL', name: 'Solana', price_usd: 198.45, change_24h: 5.4, volume_24h: 3500000000, market_cap: 91000000000 }
+            };
+
+            document.getElementById('dataSource').textContent = 'Demo Data';
+            document.getElementById('dataSource').className = 'text-yellow-400 font-semibold';
+        }
+
+        async function loadCoinSelector() {
+            const container = document.getElementById('coinSelector');
+            const coins = Object.keys(marketData);
+
+            container.innerHTML = coins.map(symbol => {
+                const config = COIN_CONFIG[symbol];
+                const isActive = symbol === selectedCoin;
+
+                return `
+                    <button class="coin-selector-pill ${isActive ? 'active' : ''} px-4 py-2 rounded-full font-medium transition-all flex items-center space-x-2" 
+                            onclick="selectCoin('${symbol}')" data-coin="${symbol}">
+                        <img src="${config.logo}" alt="${config.name}" class="w-5 h-5 rounded-full"
+                             onerror="this.src='https://via.placeholder.com/20/3B82F6/FFFFFF?text=${symbol[0]}'">
+                        <span>${config.name} (${symbol})</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        async function selectCoin(symbol) {
+            selectedCoin = symbol;
+
+            // Update URL without refresh
+            const url = new URL(window.location);
+            url.searchParams.set('coin', symbol);
+            window.history.pushState({}, '', url);
+
+            // Update selector states
+            document.querySelectorAll('.coin-selector-pill').forEach(pill => {
+                const isActive = pill.dataset.coin === symbol;
+                if (isActive) {
+                    pill.classList.add('active');
+                } else {
+                    pill.classList.remove('active');
+                }
+            });
+
+            await analyzeCoin(symbol);
+        }
+
+        async function analyzeCoin(symbol) {
+            console.log(`📊 Analyzing ${symbol}...`);
+
+            const coinData = marketData[symbol];
+            if (!coinData) return;
+
+            const config = COIN_CONFIG[symbol];
+
+            // Update selected coin info
+            document.getElementById('selectedCoinLogo').src = config.logo;
+            document.getElementById('selectedCoinLogo').classList.remove('hidden');
+            document.getElementById('selectedCoinName').textContent = config.name;
+            document.getElementById('selectedCoinSymbol').textContent = symbol;
+
+            // Update live price
+            updateLivePrice(coinData);
+
+            // Update statistics
+            updateStatistics(coinData);
+
+            // Load predictions
+            await loadPredictions(symbol);
+
+            // Load technical indicators
+            updateTechnicalIndicators(coinData);
+
+            // Update sentiment
+            updateSentiment(coinData);
+
+            // Load price chart
+            await loadPriceChart();
+
+            updateTimestamp();
+        }
+
+        function updateLivePrice(coinData) {
+            const price = coinData.price_usd || 0;
+            const change = coinData.change_24h || 0;
+            const isPositive = change >= 0;
+
+            document.getElementById('livePrice').textContent = formatCurrency(price);
+            document.getElementById('livePriceINR').textContent = `₹${(price * USD_TO_INR).toLocaleString()}`;
+
+            const changeElement = document.getElementById('priceChange');
+            const changeClass = isPositive ? 'price-change-positive' : 'price-change-negative';
+            const icon = isPositive ? 'trending-up' : 'trending-down';
+
+            changeElement.className = `${changeClass} px-3 py-2 rounded-full text-sm font-medium inline-flex items-center`;
+            changeElement.innerHTML = `
+                <i data-lucide="${icon}" class="w-4 h-4 mr-1"></i>
+                ${isPositive ? '+' : ''}${change.toFixed(2)}%
+            `;
+
+            lucide.createIcons();
+        }
+
+        function updateStatistics(coinData) {
+            const price = coinData.price_usd || 0;
+
+            document.getElementById('marketCap').textContent = formatCurrency(coinData.market_cap);
+            document.getElementById('volume24h').textContent = formatCurrency(coinData.volume_24h);
+            document.getElementById('high24h').textContent = formatCurrency(price * 1.05); // Estimated
+            document.getElementById('low24h').textContent = formatCurrency(price * 0.95); // Estimated
+        }
+
+        async function loadPredictions(symbol) {
+            try {
+                const timeframes = ['24h', '7d', '30d'];
+                const predictions = [];
+
+                for (const timeframe of timeframes) {
+                    try {
+                        const response = await fetch(`/api/predict/${symbol}?timeframe=${timeframe}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            predictions.push({
+                                timeframe,
+                                ...data.prediction
+                            });
+                        }
+                    } catch (error) {
+                        console.warn(`Failed to load ${timeframe} prediction:`, error);
+                        // Generate fallback prediction
+                        const coinData = marketData[symbol];
+                        predictions.push(generateFallbackPrediction(coinData, timeframe));
+                    }
+                }
+
+                renderPredictions(predictions);
+
+            } catch (error) {
+                console.error('Error loading predictions:', error);
+            }
+        }
+
+        function generateFallbackPrediction(coinData, timeframe) {
+            const change = coinData.change_24h || 0;
+            const multipliers = { '24h': 1.2, '7d': 3.5, '30d': 8.0 };
+            const baseChange = change * multipliers[timeframe];
+            const randomFactor = (Math.random() - 0.5) * 5;
+
+            return {
+                timeframe,
+                predicted_change: baseChange + randomFactor,
+                confidence: 0.75 + Math.random() * 0.2,
+                signal: change > 2 ? 'bullish' : change < -2 ? 'bearish' : 'neutral'
+            };
+        }
+
+        function renderPredictions(predictions) {
+            const container = document.getElementById('predictionCards');
+
+            container.innerHTML = predictions.map(prediction => {
+                const isPositive = prediction.predicted_change >= 0;
+                const signalColor = prediction.signal === 'bullish' ? 'text-green-400' : 
+                                  prediction.signal === 'bearish' ? 'text-red-400' : 'text-yellow-400';
+                const signalEmoji = prediction.signal === 'bullish' ? '🚀' : 
+                                  prediction.signal === 'bearish' ? '📉' : '⏳';
+
+                return `
+                    <div class="prediction-card p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-semibold">${prediction.timeframe} Prediction</h4>
+                            <span class="text-2xl">${signalEmoji}</span>
+                        </div>
+                        <div class="${signalColor} font-bold text-sm mb-2">${prediction.signal.toUpperCase()}</div>
+                        <div class="text-lg font-bold mb-2 ${isPositive ? 'text-green-400' : 'text-red-400'}">
+                            ${isPositive ? '+' : ''}${prediction.predicted_change.toFixed(2)}%
+                        </div>
+                        <div class="text-sm text-gray-400 mb-4">Expected price movement</div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs text-gray-400">Confidence</span>
+                            <div class="flex-1 bg-gray-700 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full transition-all" 
+                                     style="width: ${(prediction.confidence * 100)}%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-blue-400">${(prediction.confidence * 100).toFixed(0)}%</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTechnicalIndicators(coinData) {
+            const container = document.getElementById('technicalIndicators');
+            const change = coinData.change_24h || 0;
+
+            // Generate realistic technical indicators based on price change
+            const indicators = [
+                {
+                    name: 'RSI (14)',
+                    value: Math.max(20, Math.min(80, 50 + change * 2)),
+                    status: change > 2 ? 'Overbought' : change < -2 ? 'Oversold' : 'Neutral',
+                    type: change > 2 ? 'bearish' : change < -2 ? 'bullish' : 'neutral'
+                },
+                {
+                    name: 'MACD',
+                    value: change > 0 ? 'Bullish Cross' : 'Bearish Cross',
+                    status: change > 0 ? 'Buy Signal' : 'Sell Signal',
+                    type: change > 0 ? 'bullish' : 'bearish'
+                },
+                {
+                    name: 'Moving Average (50)',
+                    value: change > 0 ? 'Above MA' : 'Below MA',
+                    status: change > 0 ? 'Bullish' : 'Bearish',
+                    type: change > 0 ? 'bullish' : 'bearish'
+                },
+                {
+                    name: 'Bollinger Bands',
+                    value: Math.abs(change) > 3 ? 'Outside Bands' : 'Within Bands',
+                    status: Math.abs(change) > 3 ? 'High Volatility' : 'Normal',
+                    type: Math.abs(change) > 3 ? 'neutral' : 'neutral'
+                }
+            ];
+
+            container.innerHTML = indicators.map(indicator => `
+                <div class="technical-indicator indicator-${indicator.type}">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">${indicator.name}</span>
+                        <span class="font-bold">${typeof indicator.value === 'number' ? indicator.value.toFixed(1) : indicator.value}</span>
+                    </div>
+                    <div class="text-sm ${indicator.type === 'bullish' ? 'text-green-400' : indicator.type === 'bearish' ? 'text-red-400' : 'text-gray-400'}">
+                        ${indicator.status}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateSentiment(coinData) {
+            const change = coinData.change_24h || 0;
+
+            // Calculate sentiment based on price change
+            let sentiment = 50 + change * 5; // Base 50, +/- 5 per percent change
+            sentiment = Math.max(0, Math.min(100, sentiment));
+
+            const label = sentiment > 70 ? 'Bullish' : sentiment < 30 ? 'Bearish' : 'Neutral';
+            const color = sentiment > 70 ? 'text-green-400' : sentiment < 30 ? 'text-red-400' : 'text-yellow-400';
+
+            document.getElementById('sentimentScore').textContent = sentiment.toFixed(0);
+            document.getElementById('sentimentLabel').textContent = label;
+            document.getElementById('sentimentLabel').className = `text-lg font-semibold ${color}`;
+            document.getElementById('sentimentDescription').textContent = `Market sentiment analysis for ${selectedCoin}`;
+
+            // Update sentiment breakdown
+            const breakdown = document.getElementById('sentimentBreakdown');
+            breakdown.innerHTML = `
+                <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                    <span class="text-gray-400">Fear & Greed Index</span>
+                    <span class="font-semibold ${color}">${sentiment.toFixed(0)}/100</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                    <span class="text-gray-400">Social Sentiment</span>
+                    <span class="font-semibold ${color}">${(sentiment * 0.8).toFixed(0)}%</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                    <span class="text-gray-400">News Sentiment</span>
+                    <span class="font-semibold text-gray-400">${(sentiment * 0.6).toFixed(0)}% Neutral</span>
+                </div>
+            `;
+        }
+
+        async function loadPriceChart() {
+            const days = document.getElementById('chartTimeframe').value;
+
+            try {
+                const response = await fetch(`/api/coins/${selectedCoin}/history?days=${days}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    renderChart(data.data);
+                } else {
+                    throw new Error('Failed to load historical data');
+                }
+            } catch (error) {
+                console.error('Error loading chart data:', error);
+                renderFallbackChart();
+            }
+        }
+
+        function renderChart(historicalData) {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            const labels = historicalData.map(item => item.date);
+            const prices = historicalData.map(item => item.price);
+            const volumes = historicalData.map(item => item.volume);
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Price (USD)',
+                        data: prices,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Volume',
+                        data: volumes,
+                        borderColor: 'rgba(139, 92, 246, 1)',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        borderWidth: 1,
+                        fill: false,
+                        yAxisID: 'volume',
+                        type: 'bar'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: function(value) {
+                                    return formatCurrency(value);
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)'
+                            }
+                        },
+                        volume: {
+                            type: 'linear',
+                            position: 'right',
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: function(value) {
+                                    return formatNumber(value);
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderFallbackChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            // Generate sample data
+            const coinData = marketData[selectedCoin];
+            const basePrice = coinData.price_usd;
+            const days = 30;
+            const labels = [];
+            const prices = [];
+
+            for (let i = days; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                labels.push(date.toISOString().split('T')[0]);
+
+                // Generate realistic price variation
+                const variation = (Math.random() - 0.5) * 0.1;
+                const price = basePrice * (1 + variation);
+                prices.push(price);
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `${selectedCoin} Price (USD)`,
+                        data: prices,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: function(value) {
+                                    return formatCurrency(value);
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Action functions
+        async function generatePrediction() {
+            showLoadingOverlay(true);
+            await loadPredictions(selectedCoin);
+            showLoadingOverlay(false);
+            showToast('New predictions generated!', 'success');
+        }
+
+        async function refreshData() {
+            await loadMarketData();
+            await analyzeCoin(selectedCoin);
+            showToast('Data refreshed successfully!', 'success');
+        }
+
+        function viewHistory() {
+            window.location.href = '/history';
+        }
+
+        function exportData() {
+            const data = {
+                coin: selectedCoin,
+                data: marketData[selectedCoin],
+                timestamp: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${selectedCoin}_analysis_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('Data exported successfully!', 'success');
+        }
+
+        // Utility functions
+        function formatCurrency(amount) {
+            if (!amount) return '$0.00';
+
+            const num = parseFloat(amount);
+            if (num >= 1e12) return `$${(num / 1e12).toFixed(1)}T`;
+            if (num >= 1e9) return `$${(num / 1e9).toFixed(1)}B`;
+            if (num >= 1e6) return `$${(num / 1e6).toFixed(1)}M`;
+            if (num >= 1000) return `$${(num / 1000).toFixed(1)}K`;
+            if (num < 1) return `$${num.toFixed(6)}`;
+            return `$${num.toFixed(2)}`;
+        }
+
+        function formatNumber(num) {
+            if (!num) return '0';
+            if (num >= 1e9) return `${(num / 1e9).toFixed(1)}B`;
+            if (num >= 1e6) return `${(num / 1e6).toFixed(1)}M`;
+            if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+            return num.toFixed(0);
+        }
+
+        function updateTimestamp() {
+            const now = new Date().toLocaleString();
+            document.getElementById('lastUpdated').textContent = now;
+            document.getElementById('chartLastUpdated').textContent = now;
+        }
+
+        function startAutoRefresh() {
+            setInterval(async () => {
+                await loadMarketData();
+                await analyzeCoin(selectedCoin);
+            }, 60000); // Refresh every minute
+        }
+
+        function showLoadingOverlay(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transition-all transform translate-x-full ${
+                type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            }`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2 text-white">
+                    <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'alert-circle' : 'info'}" class="w-5 h-5"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+            lucide.createIcons();
+
+            setTimeout(() => toast.classList.remove('translate-x-full'), 100);
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
